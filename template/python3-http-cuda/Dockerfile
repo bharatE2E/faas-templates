@@ -1,6 +1,6 @@
 ARG PYTHON_VERSION=3.11
 FROM --platform=${TARGETPLATFORM:-linux/amd64} ghcr.io/openfaas/of-watchdog:0.9.15 as watchdog
-FROM --platform=${TARGETPLATFORM:-linux/amd64} docker.io/pytorch/pytorch:2.0.0-cuda11.7-cudnn8-runtime as build
+FROM --platform=${TARGETPLATFORM:-linux/amd64} docker.io/nvidia/cuda:12.3.1-base-ubuntu20.04 as build
 
 COPY --from=watchdog /fwatchdog /usr/bin/fwatchdog
 RUN chmod +x /usr/bin/fwatchdog
