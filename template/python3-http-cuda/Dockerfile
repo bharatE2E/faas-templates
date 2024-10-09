@@ -23,6 +23,7 @@ ENV PATH=$PATH:/home/app/.local/bin
 
 WORKDIR /home/app/
 
+RUN pip3 install torch torchvision torchaudio
 COPY --chown=app:app index.py           .
 COPY --chown=app:app requirements.txt   .
 USER root
